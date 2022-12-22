@@ -1,0 +1,87 @@
+﻿@model IEnumerable<QUẢN_LÝ_THƯ_VIỆN.Models.DOCGIA>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    button {
+        border-radius: 13px;
+        border-color: lightblue;
+        border-style: groove;
+        background-color: powderblue;
+    }
+    button:hover {
+        background-color: lightsteelblue;
+    }
+    .table {
+        background-image: url("https://i.pinimg.com/originals/b0/6f/fc/b06ffc2389dd2ec660480c42728cef50.jpg");
+        background-size: cover;
+        color: black;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<h2>DANH SÁCH ĐỌC GIẢ</h2>
+
+<p>
+    <button>@Html.ActionLink("Tạo mới", "Create")</button>
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MADG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HOTEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DCHI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGSINH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SODT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGDK)
+        </th>
+        <th>OPTIONS</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MADG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HOTEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DCHI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGSINH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SODT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGDK)
+            </td>
+            <td>
+                <button>@Html.ActionLink("Sửa", "Edit", new { id = item.MADG })</button> 
+                <button>@Html.ActionLink("Chi tiêt", "Details", new { id = item.MADG })</button> 
+                <button>@Html.ActionLink("Xóa", "Alert_delete", "docgia")</button>
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    <button>@Html.ActionLink("Trở lại trang chủ", "Wellcome", "trangchu")</button>
+</p>
+

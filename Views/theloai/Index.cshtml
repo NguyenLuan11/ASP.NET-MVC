@@ -1,0 +1,63 @@
+﻿@model IEnumerable<QUẢN_LÝ_THƯ_VIỆN.Models.THELOAI>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    button {
+        border-radius: 13px;
+        border-color: lightblue;
+        border-style: groove;
+        background-color: powderblue;
+    }
+    button:hover {
+        background-color: lightsteelblue;
+    }
+    .table {
+        background-image: url("https://quatangtiny.com/wp-content/uploads/2021/09/moi-ngay-mot-trang-sach.jpg");
+        background-size: cover;
+        color: black;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<h2>DANH SÁCH THỂ LOẠI SÁCH</h2>
+
+<p>
+    <button>@Html.ActionLink("Tạo mới", "Create")</button>
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MATHELOAI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TENTHELOAI)
+        </th>
+        <th>OPTIONS</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MATHELOAI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENTHELOAI)
+            </td>
+            <td>
+                <button>@Html.ActionLink("Sửa", "Edit", new { id = item.MATHELOAI })</button> 
+                <button>@Html.ActionLink("Chi tiết", "Details", new { id = item.MATHELOAI })</button> 
+                <button>@Html.ActionLink("Xóa", "Delete", new { id = item.MATHELOAI })</button>
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    <button>@Html.ActionLink("Trở lại trang chủ", "Wellcome", "trangchu")</button>
+</p>
+

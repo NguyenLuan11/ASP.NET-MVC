@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLTVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DOCGIA">
+          <Key>
+            <PropertyRef Name="MADG" />
+          </Key>
+          <Property Name="MADG" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="HOTEN" Type="nvarchar" MaxLength="40" />
+          <Property Name="DCHI" Type="nvarchar" MaxLength="50" />
+          <Property Name="NGSINH" Type="smalldatetime" />
+          <Property Name="SODT" Type="varchar" MaxLength="20" />
+          <Property Name="NGDK" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="GIAHAN">
+          <Key>
+            <PropertyRef Name="MADG" />
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MADG" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MASACH" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="TUNGAY" Type="smalldatetime" />
+          <Property Name="DENNGAY" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="MUON_TRA">
+          <Key>
+            <PropertyRef Name="MADG" />
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MADG" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MASACH" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="SL" Type="int" />
+          <Property Name="NGMUON" Type="smalldatetime" />
+          <Property Name="NGQDTRA" Type="smalldatetime" />
+          <Property Name="NGTRA" Type="smalldatetime" />
+          <Property Name="PHATQH" Type="money" />
+        </EntityType>
+        <EntityType Name="SACH">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="TENSACH" Type="nvarchar" MaxLength="40" />
+          <Property Name="MATHELOAI" Type="char" MaxLength="4" />
+          <Property Name="TACGIA" Type="nvarchar" MaxLength="40" />
+          <Property Name="NGXB" Type="smalldatetime" />
+          <Property Name="SL" Type="int" />
+        </EntityType>
+        <EntityType Name="THELOAI">
+          <Key>
+            <PropertyRef Name="MATHELOAI" />
+          </Key>
+          <Property Name="MATHELOAI" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="TENTHELOAI" Type="nvarchar" MaxLength="40" />
+        </EntityType>
+        <Association Name="FK__GIAHAN__MADG__2F10007B">
+          <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="1" />
+          <End Role="GIAHAN" Type="Self.GIAHAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCGIA">
+              <PropertyRef Name="MADG" />
+            </Principal>
+            <Dependent Role="GIAHAN">
+              <PropertyRef Name="MADG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GIAHAN__MASACH__300424B4">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="GIAHAN" Type="Self.GIAHAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="GIAHAN">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MUON_TRA__MADG__2B3F6F97">
+          <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="1" />
+          <End Role="MUON_TRA" Type="Self.MUON_TRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCGIA">
+              <PropertyRef Name="MADG" />
+            </Principal>
+            <Dependent Role="MUON_TRA">
+              <PropertyRef Name="MADG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MUON_TRA__MASACH__2C3393D0">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="MUON_TRA" Type="Self.MUON_TRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="MUON_TRA">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SACH__MATHELOAI__267ABA7A">
+          <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1" />
+          <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THELOAI">
+              <PropertyRef Name="MATHELOAI" />
+            </Principal>
+            <Dependent Role="SACH">
+              <PropertyRef Name="MATHELOAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTVModelStoreContainer">
+          <EntitySet Name="DOCGIA" EntityType="Self.DOCGIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GIAHAN" EntityType="Self.GIAHAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MUON_TRA" EntityType="Self.MUON_TRA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__GIAHAN__MADG__2F10007B" Association="Self.FK__GIAHAN__MADG__2F10007B">
+            <End Role="DOCGIA" EntitySet="DOCGIA" />
+            <End Role="GIAHAN" EntitySet="GIAHAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GIAHAN__MASACH__300424B4" Association="Self.FK__GIAHAN__MASACH__300424B4">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="GIAHAN" EntitySet="GIAHAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MUON_TRA__MADG__2B3F6F97" Association="Self.FK__MUON_TRA__MADG__2B3F6F97">
+            <End Role="DOCGIA" EntitySet="DOCGIA" />
+            <End Role="MUON_TRA" EntitySet="MUON_TRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MUON_TRA__MASACH__2C3393D0" Association="Self.FK__MUON_TRA__MASACH__2C3393D0">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="MUON_TRA" EntitySet="MUON_TRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SACH__MATHELOAI__267ABA7A" Association="Self.FK__SACH__MATHELOAI__267ABA7A">
+            <End Role="THELOAI" EntitySet="THELOAI" />
+            <End Role="SACH" EntitySet="SACH" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLTVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DOCGIA">
+          <Key>
+            <PropertyRef Name="MADG" />
+          </Key>
+          <Property Name="MADG" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DCHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NGSINH" Type="DateTime" Precision="0" />
+          <Property Name="SODT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NGDK" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="GIAHANs" Relationship="Self.FK__GIAHAN__MADG__2F10007B" FromRole="DOCGIA" ToRole="GIAHAN" />
+          <NavigationProperty Name="MUON_TRA" Relationship="Self.FK__MUON_TRA__MADG__2B3F6F97" FromRole="DOCGIA" ToRole="MUON_TRA" />
+        </EntityType>
+        <EntityType Name="GIAHAN">
+          <Key>
+            <PropertyRef Name="MADG" />
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MADG" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MASACH" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TUNGAY" Type="DateTime" Precision="0" />
+          <Property Name="DENNGAY" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="DOCGIA" Relationship="Self.FK__GIAHAN__MADG__2F10007B" FromRole="GIAHAN" ToRole="DOCGIA" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__GIAHAN__MASACH__300424B4" FromRole="GIAHAN" ToRole="SACH" />
+        </EntityType>
+        <EntityType Name="MUON_TRA">
+          <Key>
+            <PropertyRef Name="MADG" />
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MADG" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MASACH" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SL" Type="Int32" />
+          <Property Name="NGMUON" Type="DateTime" Precision="0" />
+          <Property Name="NGQDTRA" Type="DateTime" Precision="0" />
+          <Property Name="NGTRA" Type="DateTime" Precision="0" />
+          <Property Name="PHATQH" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="DOCGIA" Relationship="Self.FK__MUON_TRA__MADG__2B3F6F97" FromRole="MUON_TRA" ToRole="DOCGIA" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK__MUON_TRA__MASACH__2C3393D0" FromRole="MUON_TRA" ToRole="SACH" />
+        </EntityType>
+        <EntityType Name="SACH">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENSACH" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="MATHELOAI" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="TACGIA" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="NGXB" Type="DateTime" Precision="0" />
+          <Property Name="SL" Type="Int32" />
+          <NavigationProperty Name="GIAHANs" Relationship="Self.FK__GIAHAN__MASACH__300424B4" FromRole="SACH" ToRole="GIAHAN" />
+          <NavigationProperty Name="MUON_TRA" Relationship="Self.FK__MUON_TRA__MASACH__2C3393D0" FromRole="SACH" ToRole="MUON_TRA" />
+          <NavigationProperty Name="THELOAI" Relationship="Self.FK__SACH__MATHELOAI__267ABA7A" FromRole="SACH" ToRole="THELOAI" />
+        </EntityType>
+        <EntityType Name="THELOAI">
+          <Key>
+            <PropertyRef Name="MATHELOAI" />
+          </Key>
+          <Property Name="MATHELOAI" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENTHELOAI" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK__SACH__MATHELOAI__267ABA7A" FromRole="THELOAI" ToRole="SACH" />
+        </EntityType>
+        <Association Name="FK__GIAHAN__MADG__2F10007B">
+          <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="1" />
+          <End Role="GIAHAN" Type="Self.GIAHAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCGIA">
+              <PropertyRef Name="MADG" />
+            </Principal>
+            <Dependent Role="GIAHAN">
+              <PropertyRef Name="MADG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MUON_TRA__MADG__2B3F6F97">
+          <End Role="DOCGIA" Type="Self.DOCGIA" Multiplicity="1" />
+          <End Role="MUON_TRA" Type="Self.MUON_TRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOCGIA">
+              <PropertyRef Name="MADG" />
+            </Principal>
+            <Dependent Role="MUON_TRA">
+              <PropertyRef Name="MADG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GIAHAN__MASACH__300424B4">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="GIAHAN" Type="Self.GIAHAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="GIAHAN">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MUON_TRA__MASACH__2C3393D0">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+          <End Role="MUON_TRA" Type="Self.MUON_TRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="MUON_TRA">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SACH__MATHELOAI__267ABA7A">
+          <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1" />
+          <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THELOAI">
+              <PropertyRef Name="MATHELOAI" />
+            </Principal>
+            <Dependent Role="SACH">
+              <PropertyRef Name="MATHELOAI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLTVEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DOCGIAs" EntityType="Self.DOCGIA" />
+          <EntitySet Name="GIAHANs" EntityType="Self.GIAHAN" />
+          <EntitySet Name="MUON_TRA" EntityType="Self.MUON_TRA" />
+          <EntitySet Name="SACHes" EntityType="Self.SACH" />
+          <EntitySet Name="THELOAIs" EntityType="Self.THELOAI" />
+          <AssociationSet Name="FK__GIAHAN__MADG__2F10007B" Association="Self.FK__GIAHAN__MADG__2F10007B">
+            <End Role="DOCGIA" EntitySet="DOCGIAs" />
+            <End Role="GIAHAN" EntitySet="GIAHANs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MUON_TRA__MADG__2B3F6F97" Association="Self.FK__MUON_TRA__MADG__2B3F6F97">
+            <End Role="DOCGIA" EntitySet="DOCGIAs" />
+            <End Role="MUON_TRA" EntitySet="MUON_TRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GIAHAN__MASACH__300424B4" Association="Self.FK__GIAHAN__MASACH__300424B4">
+            <End Role="SACH" EntitySet="SACHes" />
+            <End Role="GIAHAN" EntitySet="GIAHANs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MUON_TRA__MASACH__2C3393D0" Association="Self.FK__MUON_TRA__MASACH__2C3393D0">
+            <End Role="SACH" EntitySet="SACHes" />
+            <End Role="MUON_TRA" EntitySet="MUON_TRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SACH__MATHELOAI__267ABA7A" Association="Self.FK__SACH__MATHELOAI__267ABA7A">
+            <End Role="THELOAI" EntitySet="THELOAIs" />
+            <End Role="SACH" EntitySet="SACHes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLTVModelStoreContainer" CdmEntityContainer="QLTVEntities">
+          <EntitySetMapping Name="DOCGIAs">
+            <EntityTypeMapping TypeName="QLTVModel.DOCGIA">
+              <MappingFragment StoreEntitySet="DOCGIA">
+                <ScalarProperty Name="MADG" ColumnName="MADG" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="DCHI" ColumnName="DCHI" />
+                <ScalarProperty Name="NGSINH" ColumnName="NGSINH" />
+                <ScalarProperty Name="SODT" ColumnName="SODT" />
+                <ScalarProperty Name="NGDK" ColumnName="NGDK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GIAHANs">
+            <EntityTypeMapping TypeName="QLTVModel.GIAHAN">
+              <MappingFragment StoreEntitySet="GIAHAN">
+                <ScalarProperty Name="MADG" ColumnName="MADG" />
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="TUNGAY" ColumnName="TUNGAY" />
+                <ScalarProperty Name="DENNGAY" ColumnName="DENNGAY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MUON_TRA">
+            <EntityTypeMapping TypeName="QLTVModel.MUON_TRA">
+              <MappingFragment StoreEntitySet="MUON_TRA">
+                <ScalarProperty Name="MADG" ColumnName="MADG" />
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="SL" ColumnName="SL" />
+                <ScalarProperty Name="NGMUON" ColumnName="NGMUON" />
+                <ScalarProperty Name="NGQDTRA" ColumnName="NGQDTRA" />
+                <ScalarProperty Name="NGTRA" ColumnName="NGTRA" />
+                <ScalarProperty Name="PHATQH" ColumnName="PHATQH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SACHes">
+            <EntityTypeMapping TypeName="QLTVModel.SACH">
+              <MappingFragment StoreEntitySet="SACH">
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
+                <ScalarProperty Name="MATHELOAI" ColumnName="MATHELOAI" />
+                <ScalarProperty Name="TACGIA" ColumnName="TACGIA" />
+                <ScalarProperty Name="NGXB" ColumnName="NGXB" />
+                <ScalarProperty Name="SL" ColumnName="SL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THELOAIs">
+            <EntityTypeMapping TypeName="QLTVModel.THELOAI">
+              <MappingFragment StoreEntitySet="THELOAI">
+                <ScalarProperty Name="MATHELOAI" ColumnName="MATHELOAI" />
+                <ScalarProperty Name="TENTHELOAI" ColumnName="TENTHELOAI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

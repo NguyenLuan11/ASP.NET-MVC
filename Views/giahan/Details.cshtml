@@ -1,0 +1,65 @@
+﻿@model QUẢN_LÝ_THƯ_VIỆN.Models.GIAHAN
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    button {
+        border-radius: 13px;
+        border-color: lightblue;
+        border-style: groove;
+        background-color: powderblue;
+    }
+    button:hover {
+        background-color: lightsteelblue;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<h2>CHI TIẾT GIA HẠN</h2>
+
+<div>
+    <h4>DANH SÁCH GIA HẠN MƯỢN SÁCH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MADG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MADG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MASACH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MASACH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TUNGAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TUNGAY)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DENNGAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DENNGAY)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button>@Html.ActionLink("Sửa", "Edit", new { id = Model.MADG, masach = Model.MASACH })</button> 
+    <button>@Html.ActionLink("Trở lại danh sách", "Index")</button>
+</p>

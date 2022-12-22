@@ -1,0 +1,49 @@
+﻿@model QUẢN_LÝ_THƯ_VIỆN.Models.THELOAI
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    button:hover {
+        background-color: lightsteelblue;
+    }
+    button {
+        border-radius: 13px;
+        border-color: lightblue;
+        border-style: groove;
+        background-color: powderblue;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<h2>CHI TIẾT DANH SÁCH</h2>
+
+<div>
+    <h4>THỂ LOẠI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MATHELOAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATHELOAI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TENTHELOAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENTHELOAI)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button>@Html.ActionLink("Sửa", "Edit", new { id = Model.MATHELOAI })</button> 
+    <button>@Html.ActionLink("Trở lại danh sách", "Index")</button>
+</p>

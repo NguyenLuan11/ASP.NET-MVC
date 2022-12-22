@@ -1,0 +1,55 @@
+﻿@model QUẢN_LÝ_THƯ_VIỆN.Models.THELOAI
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    button:hover {
+        background-color: lightsteelblue;
+    }
+    button {
+        border-radius: 13px;
+        border-color: lightblue;
+        border-style: groove;
+        background-color: powderblue;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<h2>XÓA DANH SÁCH</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>THỂ LOẠI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MATHELOAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATHELOAI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TENTHELOAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENTHELOAI)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> 
+            <button>@Html.ActionLink("Trở lại danh sách", "Index")</button>
+        </div>
+    }
+</div>

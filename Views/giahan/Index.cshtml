@@ -1,0 +1,73 @@
+﻿@model IEnumerable<QUẢN_LÝ_THƯ_VIỆN.Models.GIAHAN>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    button {
+        border-radius: 13px;
+        border-color: lightblue;
+        border-style: groove;
+        background-color: powderblue;
+    }
+    button:hover {
+        background-color: lightsteelblue;
+    }
+    .table {
+        background-image: url("https://i.ex-cdn.com/nhadautu.vn/files/content/2019/08/03/bookstagram-backgrounds-bed-15647383556051871074674-crop-1564738360494228345737-0243.jpg");
+        background-size: cover;
+        color: black;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<h2>DANH SÁCH GIA HẠN MƯỢN SÁCH</h2>
+
+<p>
+    <button>@Html.ActionLink("Tạo mới", "Create")</button>
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MADG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MASACH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TUNGAY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DENNGAY)
+        </th>
+        <th>OPTIONS</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MADG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MASACH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TUNGAY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DENNGAY)
+        </td>
+        <td>
+            <button>@Html.ActionLink("Sửa", "Edit", new { id = item.MADG, masach = item.MASACH })</button> 
+            <button>@Html.ActionLink("Chi tiết", "Details", new { id = item.MADG, masach = item.MASACH }) </button>
+            <button>@Html.ActionLink("Xóa", "Delete", new { id = item.MADG, masach = item.MASACH })</button> 
+        </td>
+    </tr>
+}
+</table>
+<p>
+    <button>@Html.ActionLink("Trở lại trang chủ", "Wellcome", "trangchu")</button>
+</p>

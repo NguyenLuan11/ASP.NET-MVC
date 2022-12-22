@@ -1,0 +1,96 @@
+﻿@model QUẢN_LÝ_THƯ_VIỆN.Models.MUON_TRA
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    button {
+        border-radius: 13px;
+        border-color: lightblue;
+        border-style: groove;
+        background-color: powderblue;
+    }
+    button:hover {
+        background-color: lightsteelblue;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<h2>XÓA</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DANH SÁCH MƯỢN - TRẢ SÁCH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MADG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MADG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MASACH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MASACH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGMUON)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGMUON)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGQDTRA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGQDTRA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGTRA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGTRA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PHATQH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHATQH)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> 
+            <button>@Html.ActionLink("Trở lại danh sách", "Index")</button>
+        </div>
+    }
+</div>

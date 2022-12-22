@@ -1,0 +1,82 @@
+﻿@model QUẢN_LÝ_THƯ_VIỆN.Models.SACH
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    button {
+        border-radius: 13px;
+        border-color: lightblue;
+        border-style: groove;
+        background-color: powderblue;
+    }
+
+    button:hover {
+        background-color: lightsteelblue;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<h2>CHI TIẾT DANH SÁCH</h2>
+
+<div>
+    <h4>SÁCH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MASACH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MASACH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TENSACH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENSACH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MATHELOAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATHELOAI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TACGIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TACGIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NGXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <button>@Html.ActionLink("Sửa", "Edit", new { id = Model.MASACH })</button> 
+    <button>@Html.ActionLink("Trở lại danh sách", "Index")</button>
+</p>

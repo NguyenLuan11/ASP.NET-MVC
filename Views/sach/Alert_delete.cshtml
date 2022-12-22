@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    h3 {
+        color: red;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    button:hover {
+        background-color: lightsteelblue;
+    }
+    button {
+        border-radius: 13px;
+        border-color: lightblue;
+        border-style: groove;
+        background-color: powderblue;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+</style>
+
+
+<h3>NẾU ĐỐI TƯỢNG CÓ RÀNG BUỘC VỚI DANH SÁCH MƯỢN-TRẢ VÀ DANH SÁCH GIA HẠN THÌ VIỆC XÓA ĐỐI TƯỢNG SẼ GÂY RA LỖI !</h3>
+<h3>BẠN CÓ MUỐN XÓA ĐỐI TƯỢNG?</h3>
+<button>@Html.ActionLink("Xóa", "Delete", "sach")</button>
+<button>@Html.ActionLink("Trở lại danh sách", "Index")</button>
+
+
+
+<script>
+    alert("CHÚ Ý: HÃY KIỂM TRA RÀNG BUỘC VỚI DANH SÁCH MƯỢN-TRẢ VÀ DANH SÁCH GIA HẠN TRƯỚC KHI XÓA!");
+</script>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="~/images/g4.jpg">
+    <title>@ViewBag.Title  GROUP 4 - MY LIBRARY</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        input.box_search {
+            color: blue;
+            width: 300px;
+            height: 30px;
+            opacity: 0.9;
+            border-radius: 15px;
+            padding: 5px 15px;
+            border: 0;
+        }
+
+        button.enter_search {
+            width: 60px;
+            height: 30px;
+            opacity: 0.8;
+            border-radius: 15px;
+            border: 0;
+            background-color: powderblue;
+        }
+
+        button.enter_search:hover {
+            background-color: lightsteelblue;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <p>
+                    <i><b style=" text-align: center; color: lightsteelblue; font-size: xx-large;">QUẢN LÝ THƯ VIỆN</b></i>
+                </p>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("HOME", "Wellcome", "trangchu")</li>
+                    <li>@Html.ActionLink("SÁCH", "Index", "sach")</li>
+                    <li>@Html.ActionLink("THỂ LOẠI", "Index", "theloai")</li>
+                    <li>@Html.ActionLink("ĐỌC GIẢ", "Index", "docgia")</li>
+                    <li>@Html.ActionLink("MƯỢN-TRẢ", "Index", "muon_tra")</li>
+                    <li>@Html.ActionLink("GIA HẠN", "Index", "giahan")</li>
+                    <li style="left: 300px;">
+                        <input class="box_search" placeholder="Enter your search" />
+                        <button class="enter_search" type="button">
+                            Search
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content" style="padding-top: 45px;">
+        @RenderBody()
+
+    </div>
+    
+    <footer style="background-color: lightsteelblue; text-align: center">
+        <hr />
+        <p>&copy; @DateTime.Now.Year - GROUP 4 - MY LIBRARY</p>
+        <p>&copy; Lê Thanh Sang - 0950080138</p>
+        <p>&copy; Trần Nguyên Luân - 0950080130</p>
+        <p>&copy; Huỳnh Võ Tuấn Linh - 0950080128</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

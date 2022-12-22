@@ -1,0 +1,92 @@
+﻿@model IEnumerable<QUẢN_LÝ_THƯ_VIỆN.Models.MUON_TRA>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    button {
+        border-radius: 13px;
+        border-color: lightblue;
+        border-style: groove;
+        background-color: powderblue;
+    }
+    button:hover {
+        background-color: lightsteelblue;
+    }
+    .table {
+        background-image: url("https://png.pngtree.com/background/20210710/original/pngtree-creative-synthesis-simple-book-education-and-training-background-picture-image_1048845.jpg");
+        background-size: cover;
+        color: black;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<h2>DANH SÁCH MƯỢN - TRẢ SÁCH</h2>
+
+<p>
+    <button>@Html.ActionLink("Tạo mới", "Create")</button>
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MADG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MASACH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGMUON)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGQDTRA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGTRA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHATQH)
+        </th>
+        <th>OPTIONS</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MADG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MASACH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGMUON)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGQDTRA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGTRA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PHATQH)
+            </td>
+            <td>
+                <button>@Html.ActionLink("Sửa", "Edit", new { id = item.MADG, masach = item.MASACH })</button>
+                <button>@Html.ActionLink("Chi tiết", "Details", new { id = item.MADG, masach = item.MASACH })</button>
+                <button>@Html.ActionLink("Xóa", "Delete", new { id = item.MADG, masach = item.MASACH })</button>
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    <button>@Html.ActionLink("Trở lại trang chủ", "Wellcome", "trangchu")</button>
+</p>

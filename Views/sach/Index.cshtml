@@ -1,0 +1,87 @@
+﻿@model IEnumerable<QUẢN_LÝ_THƯ_VIỆN.Models.SACH>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    button {
+        border-radius: 13px;
+        border-color: lightblue;
+        border-style: groove;
+        background-color: powderblue;
+    }
+
+    button:hover {
+        background-color: lightsteelblue;
+    }
+
+    .table {
+        background-image: url("https://cdn.123job.vn/123job/uploads/2021/05/27/2021_05_27______d326ed021ef9c5f7dbe5ad589bf9d036.jpeg");
+        background-size:cover;
+        color: black;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+</style>
+
+<h2>THƯ VIỆN</h2>
+
+<p>
+    <button>@Html.ActionLink("Tạo mới", "Create")</button>
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MASACH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TENSACH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MATHELOAI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TACGIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGXB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SL)
+        </th>
+        <th>OPTIONS</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MASACH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENSACH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MATHELOAI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TACGIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGXB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SL)
+        </td>
+        <td>
+            <button>@Html.ActionLink("Sửa", "Edit", new { id = item.MASACH })</button> 
+            <button>@Html.ActionLink("Chi tiết", "Details", new { id = item.MASACH })</button> 
+            <button>@Html.ActionLink("Xóa", "Alert_delete", "sach")</button>
+        </td>
+    </tr>
+}
+</table>
+<p>
+    <button>@Html.ActionLink("Trở lại trang chủ", "Wellcome", "trangchu")</button>
+</p>
